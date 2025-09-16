@@ -130,7 +130,7 @@ class Compiler(Tool):
     Default compiler march uses GCC march.
     """
 
-    default_compiler_march = "rv64imafdcvh_svinval_zfh_zba_zbb_zbc_zbs_zifencei_zicsr_zvkned_zicbom_zicbop_zicboz_zawrs_zihintpause_zvbb1_zicond_zvkg_zvkn_zvbc_zfa"
+    default_compiler_march = "rv64imafdcv_svinval_zfh_zba_zbb_zbc_zbs_zifencei_zicsr_zvkned_zicbom_zicbop_zicboz_zawrs_zihintpause_zvbb1_zicond_zvkg_zvkn_zvbc_zfa"
 
     def __init__(
         self,
@@ -292,7 +292,6 @@ class Spike(Tool):
             if not spike_isa:
                 spike_isa = "RV64IMAFDCVH_zba_zbb_zbc_zfh_zbs_zfbfmin_zvfh_zvbb_zvbc_zvfbfmin_zvfbfwma_zvkg_zvkned_zvknhb_svpbmt_sstc_zicntr"
             tool_name = "tt_spike"
-            args.append("--varch=vlen:256,elen:64")
             args.append(f"--max-instrs={spike_max_instr}")
         args += [f"--isa={spike_isa}"]
         super().__init__(path=spike_path, env_name="SPIKE_PATH", tool_name=tool_name, args=args)
